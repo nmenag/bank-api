@@ -9,6 +9,10 @@ config :bank_api, BankAPI.Repo,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
+config :bank_api, BankAPI.EventStore,
+  serializer: Commanded.Serialization.JsonSerializer,
+  url: "ecto://postgres:hainover1@localhost:5432/bank_api_eventstore_dev"
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

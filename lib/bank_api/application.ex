@@ -7,6 +7,7 @@ defmodule BankAPI.Application do
 
   def start(_type, _args) do
     children = [
+      BankAPI.EventApp,
       # Start the Ecto repository
       BankAPI.Repo,
       # Start the Telemetry supervisor

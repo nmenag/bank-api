@@ -19,6 +19,8 @@ config :bank_api, BankAPIWeb.Endpoint,
   pubsub_server: BankAPI.PubSub,
   live_view: [signing_salt: "HJ9u+UOG"]
 
+config :bank_api, event_stores: [BankAPI.EventStore]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
