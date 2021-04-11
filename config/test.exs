@@ -12,6 +12,18 @@ config :bank_api, BankAPI.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
+
+config :bank_api, BankAPI.EventStore,
+  serializer: EventStore.JsonSerializer,
+  username: "postgres",
+  password: "hainover1",
+  database: "bank_api_eventstore_test",
+  hostname: "localhost",
+  pool_size: 1
+
+config :bank_api, :event_store,
+  adapter: Commanded.EventStore.Adapters.InMemory
+
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :bank_api, BankAPIWeb.Endpoint,
