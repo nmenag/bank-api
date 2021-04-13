@@ -5,4 +5,6 @@ defmodule BankAPI.EventApp do
       adapter: Commanded.EventStore.Adapters.EventStore,
       event_store: BankAPI.EventStore
     ]
+
+    router BankAPI.Router
   end

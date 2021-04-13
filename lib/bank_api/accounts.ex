@@ -7,7 +7,7 @@ defmodule BankAPI.Accounts do
 
   alias Ecto.Changeset
   alias BankAPI.Repo
-  alias BankAPI.Router
+  alias BankAPI.EventApp
   alias BankAPI.Accounts.Commands.OpenAccount
   alias BankAPI.Schema.Account
 
@@ -24,7 +24,7 @@ defmodule BankAPI.Accounts do
           initial_balance: changeset.changes.initial_balance,
           account_uuid: account_uuid
         }
-        |> Router.dispatch()
+        |> EventApp.dispatch()
 
       case dispatch_result do
         :ok ->
