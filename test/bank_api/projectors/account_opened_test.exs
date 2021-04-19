@@ -1,8 +1,8 @@
 
 defmodule BankAPI.Accounts.Projectors.AccountOpenedTest do
-  use BankAPI.ProjectorCase
+  use BankAPI.ProjectorCase, async: true
 
-  alias BankAPI.Accounts.Projections.Account
+  alias BankAPI.Schema.Account
   alias BankAPI.Accounts.Events.AccountOpened
   alias BankAPI.Accounts.Projectors.AccountOpened, as: Projector
 
@@ -19,7 +19,7 @@ defmodule BankAPI.Accounts.Projectors.AccountOpenedTest do
     assert :ok =
              Projector.handle(
                account_opened_evt,
-               %{event_number: last_seen_event_number + 1}
+               %{handler_name: "Accounts.Projectors.AccountOpened", event_number: last_seen_event_number + 1}
              )
 
     assert only_instance_of(Account).current_balance == 1_000
